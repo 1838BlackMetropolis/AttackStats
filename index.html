@@ -60,8 +60,13 @@
   /* chart cards */
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
   @media (max-width:760px){.grid2{grid-template-columns:1fr;}}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 18px 14px;box-shadow:var(--shadow);min-width:0;}
+  .card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 18px 14px;box-shadow:var(--shadow);min-width:0;}
   .grid2>*{min-width:0;}
+  .srcdata{margin:14px 0 0;padding-top:10px;border-top:1px solid var(--border);font-size:12.5px;}
+  .srcdata a{color:#86b6ef;text-decoration:underline;text-underline-offset:2px;font-weight:600;}
+  .srcdata a:hover{opacity:.8;}
+  .infobtn.cardinfo{top:16px;right:16px;}
+  .callout.cardcallout{top:40px;right:16px;}
   .card h3{margin:0 0 2px;font-size:15.5px;font-weight:700;}
   .card .csub{margin:0 0 14px;font-size:12.5px;color:var(--muted);}
   .legend{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 12px;}
@@ -156,7 +161,7 @@
   <div class="sources" id="sources">
     <h3>Sources &amp; references</h3>
     <div class="srow"><span class="k">Main data source:</span>
-      <a href="https://docs.google.com/spreadsheets/d/1R2l4IdsIU5pY808WsFSs0N36JB4CEl2X/edit?usp=drive_link&amp;ouid=114702581068062549023&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">1834&ndash;1849 Mob Attacks Full Data (spreadsheet)</a>
+      <a href="https://docs.google.com/spreadsheets/d/1pyoDLN6U8QqnlUH2AnVfrueEmofOWa6p/edit?usp=drive_link&amp;ouid=114702581068062549023&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">1834&ndash;1849 Mob Attacks Full Data (spreadsheet)</a>
     </div>
     <div class="srow"><span class="k">References:</span>
       <a href="https://drive.google.com/file/d/15pM8E_rK0Zimb46kpS46OvTcxZnL_8y7/view?usp=drive_link" target="_blank" rel="noopener">1842 Lombard Street Mob Attack &amp; Beneficial Hall</a><span class="sep">·</span>
@@ -191,7 +196,7 @@
 <div id="tt" role="tooltip"></div>
 
 <script>
-const DB = {"attacks": ["Flying Horses", "Red Row", "Lombard Street", "Boyer House", "California House"], "data": {"Flying Horses": {"label": "1834 — Flying Horses", "dates": "Aug 9–15, 1834", "premed": 9.0, "aggr": 0.0, "sdinc": 6.0, "defenders": 332.0, "acquit": 0.0, "structures": 48.0, "damages": 0.0, "killed": 2.0, "mob": 200.0, "length": 7.0, "arrests": 106.0}, "Red Row": {"label": "1835 — Red Row", "dates": "Jul 13–14, 1835", "premed": 6.0, "aggr": 3.0, "sdinc": 4.0, "defenders": 83.0, "acquit": 0.0, "structures": 38.0, "damages": 0.0, "killed": 0.0, "mob": 1500.0, "length": 2.0, "arrests": 13.0}, "Lombard Street": {"label": "1842 — Lombard Street", "dates": "Aug 1–2, 1842", "premed": 10.0, "aggr": 3.0, "sdinc": 9.0, "defenders": 213.0, "acquit": 0.0, "structures": 14.0, "damages": 10374.89, "killed": 0.0, "mob": 3000.0, "length": 2.0, "arrests": 66.0}, "Boyer House": {"label": "1849 — Boyer House", "dates": "Aug 18, 1849", "premed": 1.0, "aggr": 3.0, "sdinc": 12.0, "defenders": 37.0, "acquit": 4.0, "structures": 0.0, "damages": 0.0, "killed": 0.0, "mob": 50.0, "length": 1.0, "arrests": 41.0}, "California House": {"label": "1849 — California House", "dates": "Oct 9–10, 1849", "premed": 7.0, "aggr": 0.0, "sdinc": 6.0, "defenders": 232.0, "acquit": 0.0, "structures": 10.0, "damages": 11076.0, "killed": 6.0, "mob": 500.0, "length": 2.0, "arrests": 17.0}}, "totals": {"premed": 34.0, "aggr": 11.0, "sdinc": 43.0, "defenders": 1009.0, "acquit": 7.0, "structures": 110.0, "damages": 21450.89, "killed": 8.0, "mob": 5250.0, "length": 14.0, "arrests": 243.0}, "struct": {"Homes": [44, 35, 10, 0, 3], "Church": [2, 0, 1, 0, 1], "Hall": [0, 0, 2, 0, 0], "Tavern": [0, 0, 0, 0, 1], "Boarding House": [0, 0, 0, 0, 1], "Store": [1, 0, 0, 0, 0], "Carpenter's Shop": [0, 0, 0, 0, 1], "Stable": [0, 0, 0, 0, 1], "School": [0, 0, 1, 0, 0], "Amusement structure": [1, 0, 0, 0, 0], "Fire apparatus & hose": [0, 3, 0, 0, 1], "Fire Engine": [0, 0, 0, 0, 1], "Household furniture": [0, 0, 0, 0, 0], "Bar fixtures & furniture": [0, 0, 0, 0, 0], "Banners": [0, 0, 0, 0, 0]}, "injcat": {"Gunshot": [0, 1, 1, 0, 5], "Fracture": [3, 2, 0, 4, 2], "Wound": [1, 3, 13, 2, 6], "Killed": [1, 0, 0, 0, 3], "Drowned": [1, 0, 0, 0, 0]}, "injrace": {"Black": [3, 3, 7, 1, 1], "White": [3, 3, 7, 5, 15]}, "sdtype": {"Appeal to Authorities": [1, 0, 0, 0, 0], "Armed defense of Home": [1, 2, 2, 0, 0], "Armed defense of premises": [0, 0, 0, 1, 1], "Armed street self-protection": [0, 0, 2, 0, 0], "Armed with weapons": [0, 0, 0, 4, 0], "Collective armed garrison": [1, 2, 1, 2, 0], "Coordinated Defense of Property": [1, 0, 0, 0, 2], "Coordinated Defense of Street Space": [1, 0, 1, 0, 2], "Courtroom Self-Defense": [0, 0, 0, 1, 0], "Fortification / evasion": [0, 0, 1, 0, 0], "Press / counter-narrative": [0, 0, 2, 0, 0], "Refusing to go away when ordered": [0, 0, 0, 1, 0], "Reporting a white person to authorities": [0, 0, 0, 1, 1], "Retaliation": [0, 0, 0, 0, 0], "Street Intelligence Gathering": [1, 0, 0, 0, 0], "Collective Rescue Attempt": [0, 0, 0, 1, 0]}, "sdctx": {"Appeal to Authorities": 0, "Armed defense of Home": 0, "Armed defense of premises": 0, "Armed street self-protection": 0, "Armed with weapons": 0, "Collective armed garrison": 0, "Coordinated Defense of Property": 0, "Coordinated Defense of Street Space": 4, "Courtroom Self-Defense": 0, "Fortification / evasion": 0, "Press / counter-narrative": 1, "Refusing to go away when ordered": 0, "Reporting a white person to authorities": 0, "Retaliation": 1, "Street Intelligence Gathering": 0, "Collective Rescue Attempt": 0}, "sdpeople": {"Appeal to Authorities": [1, 0, 0, 0, 0], "Armed defense of Home": [20, 3, 2, 0, 0], "Armed defense of premises": [0, 0, 0, 10, 20], "Armed street self-protection": [0, 0, 4, 0, 0], "Armed with weapons": [0, 0, 0, 4, 0], "Collective armed garrison": [50, 80, 1, 7, 0], "Collective Rescue Attempt": [0, 0, 0, 4, 0], "Coordinated Defense of Property": [10, 0, 0, 0, 60], "Coordinated Defense of Street Space": [250, 0, 200, 0, 150], "Courtroom Self-Defense": [0, 0, 0, 4, 0], "Fortification / evasion": [0, 0, 1, 0, 0], "Press / counter-narrative": [0, 0, 5, 0, 0], "Refusing to go away when ordered": [0, 0, 0, 7, 0], "Reporting a white person to authorities": [0, 0, 0, 1, 2], "Retaliation": [0, 0, 0, 0, 0], "Street Intelligence Gathering": [1, 0, 0, 0, 0]}, "sdctx_people": {"Appeal to Authorities": 0, "Armed defense of Home": 0, "Armed defense of premises": 0, "Armed street self-protection": 0, "Armed with weapons": 0, "Collective armed garrison": 0, "Collective Rescue Attempt": 0, "Coordinated Defense of Property": 0, "Coordinated Defense of Street Space": 9, "Courtroom Self-Defense": 0, "Fortification / evasion": 0, "Press / counter-narrative": 100, "Refusing to go away when ordered": 0, "Reporting a white person to authorities": 0, "Retaliation": 3, "Street Intelligence Gathering": 0}, "sdinc_m": {"Appeal to Authorities": [1, 0, 0, 0, 0], "Armed defense of Home": [1, 2, 2, 0, 0], "Armed defense of premises": [0, 0, 0, 1, 1], "Armed street self-protection": [0, 0, 2, 0, 0], "Armed with weapons": [0, 0, 0, 4, 0], "Collective armed garrison": [1, 2, 1, 2, 0], "Collective Rescue Attempt": [0, 0, 0, 1, 0], "Coordinated Defense of Property": [1, 0, 0, 0, 2], "Coordinated Defense of Street Space": [1, 0, 1, 0, 2], "Courtroom Self-Defense": [0, 0, 0, 1, 0], "Fortification / evasion": [0, 0, 1, 0, 0], "Press / counter-narrative": [0, 0, 2, 0, 0], "Refusing to go away when ordered": [0, 0, 0, 1, 0], "Reporting a white person to authorities": [0, 0, 0, 1, 1], "Retaliation": [0, 0, 0, 0, 0], "Street Intelligence Gathering": [1, 0, 0, 0, 0]}, "sdctx_inc": {"Appeal to Authorities": 0, "Armed defense of Home": 0, "Armed defense of premises": 0, "Armed street self-protection": 0, "Armed with weapons": 0, "Collective armed garrison": 0, "Collective Rescue Attempt": 0, "Coordinated Defense of Property": 0, "Coordinated Defense of Street Space": 4, "Courtroom Self-Defense": 0, "Fortification / evasion": 0, "Press / counter-narrative": 1, "Refusing to go away when ordered": 0, "Reporting a white person to authorities": 0, "Retaliation": 1, "Street Intelligence Gathering": 0}};
+const DB = {"attacks": ["Flying Horses", "Red Row", "Lombard Street", "Boyer House", "California House"], "data": {"Flying Horses": {"label": "1834 — Flying Horses", "dates": "Aug 9–15, 1834", "premed": 16.0, "aggr": 0.0, "sdinc": 11.0, "defenders": 348.0, "acquit": 0.0, "structures": 51.0, "damages": 0.0, "killed": 2.0, "mob": 200.0, "length": 7.0, "arrests": 108.0}, "Red Row": {"label": "1835 — Red Row", "dates": "Jul 13–14, 1835", "premed": 6.0, "aggr": 3.0, "sdinc": 5.0, "defenders": 69.0, "acquit": 0.0, "structures": 42.0, "damages": 0.0, "killed": 0.0, "mob": 1500.0, "length": 2.0, "arrests": 13.0}, "Lombard Street": {"label": "1842 — Lombard Street", "dates": "Aug 1–2, 1842", "premed": 10.0, "aggr": 3.0, "sdinc": 9.0, "defenders": 213.0, "acquit": 0.0, "structures": 16.0, "damages": 10374.89, "killed": 0.0, "mob": 3000.0, "length": 2.0, "arrests": 66.0}, "Boyer House": {"label": "1849 — Boyer House", "dates": "Aug 18, 1849", "premed": 1.0, "aggr": 3.0, "sdinc": 11.0, "defenders": 37.0, "acquit": 4.0, "structures": 0.0, "damages": 0.0, "killed": 0.0, "mob": 50.0, "length": 1.0, "arrests": 41.0}, "California House": {"label": "1849 — California House", "dates": "Oct 9–10, 1849", "premed": 7.0, "aggr": 0.0, "sdinc": 6.0, "defenders": 232.0, "acquit": 0.0, "structures": 10.0, "damages": 11076.0, "killed": 6.0, "mob": 500.0, "length": 2.0, "arrests": 17.0}}, "totals": {"premed": 41.0, "aggr": 9.0, "sdinc": 42.0, "defenders": 899.0, "acquit": 7.0, "structures": 119.0, "damages": 21450.89, "killed": 8.0, "mob": 5250.0, "length": 14.0, "arrests": 245.0}, "struct": {"Frame House": [41, 31, 5, 0, 3], "Brick House": [7, 8, 7, 0, 0], "Church": [2, 0, 1, 0, 1], "Hall": [0, 0, 2, 0, 0], "Fire apparatus & hose": [0, 3, 0, 0, 1], "Household furniture": [0, 0, 0, 0, 0], "Tavern": [0, 0, 0, 0, 1], "School": [0, 0, 1, 0, 0], "Carpenter's Shop": [0, 0, 0, 0, 1], "Stable": [0, 0, 0, 0, 1], "Fire Engine": [0, 0, 0, 0, 1], "Boarding House": [0, 0, 0, 0, 1], "Amusement structure": [1, 0, 0, 0, 0], "Bar fixtures & furniture": [0, 0, 0, 0, 0], "Banners": [0, 0, 0, 0, 0]}, "injcat": {"Gunshot": [0, 1, 1, 0, 5], "Fracture": [3, 2, 0, 4, 2], "Wound": [1, 3, 13, 2, 6], "Killed": [1, 0, 0, 0, 3], "Drowned": [1, 0, 0, 0, 0]}, "injrace": {"Black": [3, 3, 7, 1, 1], "White": [3, 3, 7, 5, 15]}, "prace": {"Black": [22, 8, 10, 0, 7], "White": [0, 2, 0, 0, 6], "Interracial": [1, 0, 0, 0, 0], "(race not recorded)": [1, 0, 0, 0, 0]}, "plevel": {"Total": [2, 0, 4, 0, 2], "High": [11, 1, 4, 0, 6], "Med": [5, 3, 1, 0, 4], "Low": [6, 6, 1, 0, 1]}, "ptype_att": {"Frame House": [16, 6, 2, 0, 3], "Brick House": [5, 3, 3, 0, 0], "Church": [2, 0, 1, 0, 1], "Hall": [0, 0, 2, 0, 0], "Fire apparatus & hose": [0, 1, 0, 0, 1], "Household furniture": [0, 0, 0, 0, 2], "Tavern": [0, 0, 0, 0, 1], "School": [0, 0, 1, 0, 0], "Carpenter's Shop": [0, 0, 0, 0, 1], "Stable": [0, 0, 0, 0, 1], "Fire Engine": [0, 0, 0, 0, 1], "Boarding House": [0, 0, 0, 0, 1], "Amusement structure": [1, 0, 0, 0, 0], "Bar fixtures & furniture": [0, 0, 0, 0, 1], "Banners": [0, 0, 1, 0, 0]}, "ptype_race": {"Frame House": [26, 0, 0], "Brick House": [10, 1, 0], "Church": [4, 0, 0], "Hall": [2, 0, 0], "Fire apparatus & hose": [0, 2, 0], "Household furniture": [2, 0, 0], "Tavern": [1, 0, 0], "School": [1, 0, 0], "Carpenter's Shop": [0, 1, 0], "Stable": [0, 1, 0], "Fire Engine": [0, 1, 0], "Boarding House": [0, 1, 0], "Amusement structure": [0, 0, 1], "Bar fixtures & furniture": [0, 1, 0], "Banners": [1, 0, 0]}, "ptype_lvl": {"Frame House": [2, 12, 4, 9], "Brick House": [0, 4, 4, 3], "Church": [2, 2, 0, 0], "Hall": [2, 0, 0, 0], "Fire apparatus & hose": [0, 0, 2, 0], "Household furniture": [0, 0, 2, 0], "Tavern": [1, 0, 0, 0], "School": [0, 1, 0, 0], "Carpenter's Shop": [0, 1, 0, 0], "Stable": [0, 1, 0, 0], "Fire Engine": [0, 0, 1, 0], "Boarding House": [0, 1, 0, 0], "Amusement structure": [1, 0, 0, 0], "Bar fixtures & furniture": [0, 0, 0, 1], "Banners": [0, 0, 0, 1]}, "sdpeople": {"Appeal to Authorities": [1, 0, 0, 0, 0], "Armed defense of Black Public Space": [1, 0, 0, 0, 0], "Armed defense of Home": [0, 1, 2, 0, 0], "Armed street self-protection": [0, 0, 1, 0, 0], "Armed with weapons": [0, 0, 0, 4, 0], "Collective armed garrison": [80, 65, 1, 16, 20], "Collective Defense of Property": [10, 0, 0, 0, 0], "Collective Defense of Street Space": [250, 0, 203, 0, 150], "Collective Rescue Attempt": [0, 0, 0, 4, 0], "Collective Support for Fire Companies": [0, 0, 0, 0, 30], "Coordinated defense of Black Public Space": [0, 0, 0, 0, 30], "Defense of Home": [0, 2, 0, 0, 0], "Evading the Mob": [0, 1, 1, 0, 0], "Pleading Self-Defense": [0, 0, 0, 4, 0], "Press / counter-narrative": [0, 0, 5, 0, 0], "Prison Support": [2, 0, 0, 0, 0], "Refusing to go away when ordered": [0, 0, 0, 7, 0], "Reporting a white person to authorities": [3, 0, 0, 1, 2], "Street Intelligence Gathering": [1, 0, 0, 0, 0], "Supplying Weapons": [0, 0, 0, 1, 0], "Coordinated Defense of Street Space": [0, 0, 0, 0, 0], "Retaliation": [0, 0, 0, 0, 0]}, "sdctx_people": {"Appeal to Authorities": 0, "Armed defense of Black Public Space": 0, "Armed defense of Home": 0, "Armed street self-protection": 0, "Armed with weapons": 0, "Collective armed garrison": 0, "Collective Defense of Property": 0, "Collective Defense of Street Space": 0, "Collective Rescue Attempt": 0, "Collective Support for Fire Companies": 0, "Coordinated defense of Black Public Space": 0, "Defense of Home": 0, "Evading the Mob": 0, "Pleading Self-Defense": 0, "Press / counter-narrative": 10, "Prison Support": 0, "Refusing to go away when ordered": 0, "Reporting a white person to authorities": 0, "Street Intelligence Gathering": 0, "Supplying Weapons": 0, "Coordinated Defense of Street Space": 9, "Retaliation": 3}, "sdinc_m": {"Appeal to Authorities": [1, 0, 0, 0, 0], "Armed defense of Black Public Space": [1, 0, 0, 0, 0], "Armed defense of Home": [0, 1, 2, 0, 0], "Armed street self-protection": [0, 0, 1, 0, 0], "Armed with weapons": [0, 0, 0, 4, 0], "Collective armed garrison": [2, 2, 1, 2, 1], "Collective Defense of Property": [1, 0, 0, 0, 0], "Collective Defense of Street Space": [1, 0, 2, 0, 2], "Collective Rescue Attempt": [0, 0, 0, 1, 0], "Collective Support for Fire Companies": [0, 0, 0, 0, 1], "Coordinated defense of Black Public Space": [0, 0, 0, 0, 1], "Defense of Home": [0, 1, 0, 0, 0], "Evading the Mob": [0, 1, 1, 0, 0], "Pleading Self-Defense": [0, 0, 0, 1, 0], "Press / counter-narrative": [0, 0, 2, 0, 0], "Prison Support": [1, 0, 0, 0, 0], "Refusing to go away when ordered": [0, 0, 0, 1, 0], "Reporting a white person to authorities": [3, 0, 0, 1, 1], "Street Intelligence Gathering": [1, 0, 0, 0, 0], "Supplying Weapons": [0, 0, 0, 1, 0], "Coordinated Defense of Street Space": [0, 0, 0, 0, 0], "Retaliation": [0, 0, 0, 0, 0]}, "sdctx_inc": {"Appeal to Authorities": 0, "Armed defense of Black Public Space": 0, "Armed defense of Home": 0, "Armed street self-protection": 0, "Armed with weapons": 0, "Collective armed garrison": 0, "Collective Defense of Property": 0, "Collective Defense of Street Space": 0, "Collective Rescue Attempt": 0, "Collective Support for Fire Companies": 0, "Coordinated defense of Black Public Space": 0, "Defense of Home": 0, "Evading the Mob": 0, "Pleading Self-Defense": 0, "Press / counter-narrative": 1, "Prison Support": 0, "Refusing to go away when ordered": 0, "Reporting a white person to authorities": 0, "Street Intelligence Gathering": 0, "Supplying Weapons": 0, "Coordinated Defense of Street Space": 3, "Retaliation": 1}};
 
 const META = {
   "Flying Horses":    {year:1834, color:"var(--s1)", short:"Flying Horses"},
@@ -320,6 +325,93 @@ function card(title, sub){
   return c;
 }
 
+const SHEET_URL="https://docs.google.com/spreadsheets/d/1pyoDLN6U8QqnlUH2AnVfrueEmofOWa6p/edit?usp=drive_link&ouid=114702581068062549023&rtpof=true&sd=true";
+const SHEET_BASE="https://docs.google.com/spreadsheets/d/1pyoDLN6U8QqnlUH2AnVfrueEmofOWa6p/edit?gid=";
+const TAB_GID={
+  "At a Glance":"412900384",
+  "Official Hospital Records":"659946634",
+  "Property Destruction":"286538284",
+  "Self-Defense & Resistance":"1451125865"
+};
+function tabUrl(tab){ const g=TAB_GID[tab]; return g ? `${SHEET_BASE}${g}#gid=${g}` : SHEET_URL; }
+function srcLink(tab){
+  const p=el("p","srcdata");
+  const a=el("a",null,`Data: ${tab} tab in Google Sheets ↗`);
+  a.href=tabUrl(tab); a.target="_blank"; a.rel="noopener";
+  p.appendChild(a); return p;
+}
+function cardInfo(c, text){
+  c.style.position="relative";
+  const h=c.querySelector("h3"); if(h) h.style.paddingRight="26px";
+  const btn=el("button","infobtn cardinfo","i");
+  btn.setAttribute("aria-label","More information"); btn.setAttribute("aria-expanded","false");
+  const co=el("div","callout cardcallout",text);
+  btn.addEventListener("click",e=>{
+    e.stopPropagation();
+    const open=co.classList.contains("open");
+    document.querySelectorAll(".callout.open").forEach(x=>x.classList.remove("open"));
+    document.querySelectorAll(".infobtn[aria-expanded='true']").forEach(x=>x.setAttribute("aria-expanded","false"));
+    if(!open){ co.classList.add("open"); btn.setAttribute("aria-expanded","true"); }
+  });
+  c.appendChild(btn); c.appendChild(co); return c;
+}
+function niceMax(v){ if(v<=5)return 5; if(v<=10)return 10; if(v<=15)return 15; if(v<=20)return 20; if(v<=25)return 25; if(v<=50)return 50;
+  const p=Math.pow(10,Math.floor(Math.log10(v))); return Math.ceil(v/p)*p; }
+// SVG multi-line chart over ordered x points
+function lineChart(opts){
+  const NS="http://www.w3.org/2000/svg";
+  const W=560,H=280, mL=38,mR=52,mT=14,mB=48, iw=W-mL-mR, ih=H-mT-mB, n=opts.points.length;
+  const nice=niceMax(Math.max(1,...opts.series.flatMap(s=>s.values)));
+  const xOf=i=> mL + (n<=1?iw/2 : iw*i/(n-1));
+  const yOf=v=> mT+ih-(v/nice)*ih;
+  const mk=(tag,at)=>{ const e=document.createElementNS(NS,tag); for(const k in at) e.setAttribute(k,at[k]); return e; };
+  const svg=mk("svg",{viewBox:`0 0 ${W} ${H}`,width:"100%",role:"img"}); svg.style.display="block"; svg.style.overflow="visible";
+  const ticks=4;
+  for(let t=0;t<=ticks;t++){ const v=nice*t/ticks, y=yOf(v);
+    svg.appendChild(mk("line",{x1:mL,y1:y,x2:mL+iw,y2:y,stroke:"var(--grid)","stroke-width":1}));
+    const tl=mk("text",{x:mL-8,y:y+4,"text-anchor":"end",fill:"var(--muted)","font-size":12}); tl.textContent=num(v); svg.appendChild(tl);
+  }
+  opts.points.forEach((p,i)=>{ const x=xOf(i);
+    const t1=mk("text",{x,y:mT+ih+20,"text-anchor":"middle",fill:"var(--ink2)","font-size":13,"font-weight":600}); t1.textContent=p.label; svg.appendChild(t1);
+    if(p.sub){ const t2=mk("text",{x,y:mT+ih+36,"text-anchor":"middle",fill:"var(--muted)","font-size":11}); t2.textContent=p.sub; svg.appendChild(t2); }
+  });
+  opts.series.forEach(s=>{
+    const d=s.values.map((v,i)=>`${i?'L':'M'}${xOf(i).toFixed(1)},${yOf(v).toFixed(1)}`).join(" ");
+    svg.appendChild(mk("path",{d,fill:"none",stroke:s.color,"stroke-width":2.5,"stroke-linejoin":"round","stroke-linecap":"round"}));
+    s.values.forEach((v,i)=>{ const cx=xOf(i),cy=yOf(v);
+      svg.appendChild(mk("circle",{cx,cy,r:4.5,fill:s.color,stroke:"var(--surface)","stroke-width":2}));
+      const hit=mk("circle",{cx,cy,r:13,fill:"transparent"});
+      hit.addEventListener("mousemove",e=>showTip(e,`<span class="t-k">${opts.points[i].sub||opts.points[i].label} · ${s.name}</span><br><b>${num(v)}</b> ${opts.unit||''}`));
+      hit.addEventListener("mouseleave",hideTip); svg.appendChild(hit);
+    });
+  });
+  // de-collided end labels, colored per series
+  const labs=opts.series.map(s=>({y:yOf(s.values[s.values.length-1]),v:s.values[s.values.length-1],c:s.color})).sort((a,b)=>a.y-b.y);
+  for(let i=1;i<labs.length;i++){ if(labs[i].y-labs[i-1].y<13) labs[i].y=labs[i-1].y+13; }
+  labs.forEach(l=>{ const t=mk("text",{x:xOf(n-1)+9,y:l.y+4,fill:l.c,"font-size":13,"font-weight":700}); t.textContent=num(l.v); svg.appendChild(t); });
+  return svg;
+}
+// property over-time line charts (all-attacks view)
+function propRaceLine(){
+  const c=card("Property destroyed over time — by owner's race","Count of property records at each attack, in chronological order");
+  const src=noUnrec(DB.prace); const RC={"Black":"var(--s1)","White":"var(--s6)"};
+  const series=["Black","White"].filter(k=>src[k]).map(k=>({name:k,color:RC[k],values:src[k]}));
+  c.appendChild(legend(series));
+  c.appendChild(lineChart({points:ATTACKS.map(a=>({label:String(META[a].year),sub:META[a].short})),series,unit:"properties"}));
+  c.appendChild(srcLink("Property Destruction"));
+  return c;
+}
+function propSevLine(){
+  const c=card("Property destroyed over time — by severity","Count of property records at each attack, in chronological order; destruction level");
+  const order=["Total","High","Med","Low"]; const LC={"Total":"var(--s1)","High":"var(--s2)","Med":"var(--s3)","Low":"var(--s4)"};
+  const SEVLBL={"Total":"Totally Destroyed"};
+  const series=order.filter(k=>DB.plevel[k]).map(k=>({name:SEVLBL[k]||k,color:LC[k],values:DB.plevel[k]}));
+  c.appendChild(legend(series));
+  c.appendChild(lineChart({points:ATTACKS.map(a=>({label:String(META[a].year),sub:META[a].short})),series,unit:"properties"}));
+  c.appendChild(srcLink("Property Destruction"));
+  return c;
+}
+
 // ---------- KPI definitions ----------
 const KPIS=[
   {key:"mob",       lab:"Estimated mob size",       hero:true,  fmt:num, note:"contemporary estimate"},
@@ -360,30 +452,30 @@ function renderKPIs(vals, isAll){
 }
 
 // ---------- chart builders ----------
+const INJURY_INFO="Official hospital records — total injuries is higher in the press.";
 function injuryCategorySolo(ai){
   const c=card("Injuries by type","Official Hospital Records · a minimum count");
   const items=Object.keys(DB.injcat).map((cat,i)=>({label:cat,value:DB.injcat[cat][ai],color:CAT_COLORS[i%CAT_COLORS.length]}));
   c.appendChild(groupedBars(items,{unit:"injuries"}));
-  c.appendChild(dataTable(["Injury type","Count"], items.map(d=>[d.label,num(d.value)]),
-    ["Total", num(items.reduce((a,d)=>a+d.value,0))]));
+  c.appendChild(srcLink("Official Hospital Records"));
+  cardInfo(c, INJURY_INFO);
   return c;
 }
 function injuryRaceSolo(ai){
   const c=card("Injuries by race","Official Hospital Records · includes attackers and defenders");
   const items=Object.keys(DB.injrace).map(r=>({label:r,value:DB.injrace[r][ai],color:RACE_COLORS[r]||"var(--s1)"}));
   c.appendChild(groupedBars(items,{unit:"injuries"}));
-  c.appendChild(dataTable(["Race","Count"], items.map(d=>[d.label,num(d.value)]),
-    ["Total", num(items.reduce((a,d)=>a+d.value,0))]));
+  c.appendChild(srcLink("Official Hospital Records"));
+  cardInfo(c, INJURY_INFO);
   return c;
 }
-function genericSolo(title,sub,src,ai,color){
+function genericSolo(title,sub,src,ai,color,srcTab){
   const c=card(title,sub);
   let items=Object.keys(src).map(k=>({label:k,value:src[k][ai],color:color}));
   items=items.filter(d=>d.value>0).sort((a,b)=>b.value-a.value);
-  if(items.length===0){ c.appendChild(el("p","csub","No records for this attack.")); return c; }
+  if(items.length===0){ c.appendChild(el("p","csub","No records for this attack.")); if(srcTab) c.appendChild(srcLink(srcTab)); return c; }
   c.appendChild(groupedBars(items,{unit:""}));
-  c.appendChild(dataTable([title.split(" by ")[1]?title.split(" by ")[1].replace(/^./,x=>x.toUpperCase()):"Category","Count"],
-    items.map(d=>[d.label,num(d.value)]), ["Total", num(items.reduce((a,d)=>a+d.value,0))]));
+  if(srcTab) c.appendChild(srcLink(srcTab));
   return c;
 }
 
@@ -393,12 +485,8 @@ function injuryCategoryAll(){
   c.appendChild(legend(series));
   const rows=ATTACKS.map((a,ai)=>({label:META[a].short, values:Object.keys(DB.injcat).map(cat=>DB.injcat[cat][ai])}));
   c.appendChild(stackedBars(rows,series,{unit:"injuries"}));
-  const head=["Attack",...Object.keys(DB.injcat),"Total"];
-  const trows=ATTACKS.map((a,ai)=>{ const vs=Object.keys(DB.injcat).map(cat=>DB.injcat[cat][ai]);
-    return [META[a].short,...vs.map(num),num(vs.reduce((x,y)=>x+y,0))]; });
-  const foot=["Total",...Object.keys(DB.injcat).map(cat=>num(DB.injcat[cat].reduce((x,y)=>x+y,0))),
-    num(Object.values(DB.injcat).flat().reduce((x,y)=>x+y,0))];
-  c.appendChild(dataTable(head,trows,foot));
+  c.appendChild(srcLink("Official Hospital Records"));
+  cardInfo(c, INJURY_INFO);
   return c;
 }
 function injuryRaceAll(){
@@ -408,12 +496,8 @@ function injuryRaceAll(){
   c.appendChild(legend(series));
   const rows=ATTACKS.map((a,ai)=>({label:META[a].short, values:keys.map(r=>DB.injrace[r][ai])}));
   c.appendChild(stackedBars(rows,series,{unit:"injuries"}));
-  const head=["Attack",...keys,"Total"];
-  const trows=ATTACKS.map((a,ai)=>{ const vs=keys.map(r=>DB.injrace[r][ai]);
-    return [META[a].short,...vs.map(num),num(vs.reduce((x,y)=>x+y,0))]; });
-  const foot=["Total",...keys.map(r=>num(DB.injrace[r].reduce((x,y)=>x+y,0))),
-    num(Object.values(DB.injrace).flat().reduce((x,y)=>x+y,0))];
-  c.appendChild(dataTable(head,trows,foot));
+  c.appendChild(srcLink("Official Hospital Records"));
+  cardInfo(c, INJURY_INFO);
   return c;
 }
 // combined across attacks, striped by mob attack
@@ -433,23 +517,25 @@ function sdSolo(ai){
     r.querySelector(".rv").innerHTML = d.people>0 ? num(d.people) : `<span class="zero">${num(d.inc)} inc.</span>`;
     r.addEventListener("mousemove",e=>showTip(e,`<span class="t-k">${d.label}</span><br><b>${num(d.people)}</b> people · ${num(d.inc)} incident${d.inc==1?"":"s"}`));
   });
-  c.appendChild(dataTable(["Type","People","Incidents"], items.map(d=>[d.label,num(d.people),num(d.inc)]),
-    ["Total", num(items.reduce((a,d)=>a+d.people,0)), num(items.reduce((a,d)=>a+d.inc,0))]));
+  c.appendChild(srcLink("Self-Defense & Resistance"));
   return c;
 }
 
-function stackedByAttack(title,sub,src){
+function noUnrec(src){ const o={}; for(const k in src){ if(k!=="(race not recorded)") o[k]=src[k]; } return o; }
+function stackedByAttack(title,sub,src,order,srcTab){
   const c=card(title,sub);
   const series=ATTACKS.map(a=>({name:META[a].short,color:META[a].color}));
   c.appendChild(legend(series));
   let cats=Object.keys(src).map(k=>({label:k,values:src[k].slice(),total:src[k].reduce((a,b)=>a+b,0)}));
-  cats=cats.filter(d=>d.total>0).sort((a,b)=>b.total-a.total);
+  cats=cats.filter(d=>d.total>0);
+  if(order){ cats.sort((a,b)=>order.indexOf(a.label)-order.indexOf(b.label)); }
+  else { cats.sort((a,b)=>b.total-a.total); }
   c.appendChild(stackedBars(cats.map(d=>({label:d.label,values:d.values})), series, {unit:""}));
   const head=["Category",...ATTACKS.map(a=>META[a].short),"Total"];
   const trows=cats.map(d=>[d.label,...d.values.map(num),num(d.total)]);
   const colTot=ATTACKS.map((a,ai)=>cats.reduce((s,d)=>s+d.values[ai],0));
   const foot=["Total",...colTot.map(num),num(colTot.reduce((a,b)=>a+b,0))];
-  c.appendChild(dataTable(head,trows,foot));
+  c.appendChild(srcLink(srcTab||"Property Destruction"));
   return c;
 }
 
@@ -476,16 +562,7 @@ function stackedSelfDefense(){
   const note=el("p","csub","Numbers on slices and at line end = people documented (a minimum).");
   note.style.marginTop="10px";
   c.appendChild(note);
-  const head=["Type",...ATTACKS.map(a=>META[a].short),"In Between","People","Incidents"];
-  const cell=(p,i)=> i>0 ? `${num(p)} <span style="opacity:.55">(${num(i)})</span>` : "0";
-  const trows=cats.map(d=>[d.label,...d.ppl.map((p,si)=>cell(p,d.inc[si])),num(d.pTot),num(d.iTot)]);
-  const pCol=series.map((s,si)=>cats.reduce((sum,d)=>sum+d.ppl[si],0));
-  const iCol=series.map((s,si)=>cats.reduce((sum,d)=>sum+d.inc[si],0));
-  const foot=["Total",...pCol.map((p,si)=>cell(p,iCol[si])),num(pCol.reduce((a,b)=>a+b,0)),num(iCol.reduce((a,b)=>a+b,0))];
-  c.appendChild(dataTable(head,trows,foot));
-  const legendNote=el("p","csub","Table cells: people (incidents).");
-  legendNote.style.marginTop="6px";
-  c.appendChild(legendNote);
+  c.appendChild(srcLink("Self-Defense & Resistance"));
   return c;
 }
 
@@ -493,12 +570,11 @@ function stackedSelfDefense(){
 const CMP=[
   {key:"mob",lab:"Mob size",fmt:num,unit:""},
   {key:"killed",lab:"Killed",fmt:num,unit:"killed"},
-  {key:"structures",lab:"Structures",fmt:num,unit:"structures"},
-  {key:"defenders",lab:"Defenders",fmt:num,unit:"defenders"},
+  {key:"structures",lab:"Structures destroyed",fmt:num,unit:"structures"},
+  {key:"defenders",lab:"Number of Black People involved in Defense",fmt:num,unit:"people"},
   {key:"damages",lab:"Damages ($)",fmt:money,unit:""},
   {key:"arrests",lab:"Arrests",fmt:num,unit:"arrests"},
-  {key:"premed",lab:"Premeditation",fmt:num,unit:"indicators"},
-  {key:"sdinc",lab:"Self-defense",fmt:num,unit:"incidents"},
+  {key:"sdinc",lab:"Incidents of Black Self-Defense",fmt:num,unit:"incidents"},
 ];
 let cmpKey="mob";
 function compareCard(){
@@ -515,8 +591,7 @@ function compareCard(){
     const m=CMP.find(x=>x.key===cmpKey);
     const items=ATTACKS.map(a=>({label:META[a].short,value:DB.data[a][m.key],color:META[a].color}));
     holder.appendChild(groupedBars(items,{unit:m.unit, fmt:m.fmt}));
-    holder.appendChild(dataTable(["Attack",m.lab], items.map(d=>[d.label, m.fmt(d.value)]),
-      ["Total", m.fmt(DB.totals[m.key])]));
+    holder.appendChild(srcLink("At a Glance"));
   }
   body();
   return c;
@@ -534,9 +609,13 @@ function render(){
     const top=el("div"); top.appendChild(compareCard()); charts.appendChild(top);
     const g=el("div","grid2"); g.appendChild(injuryCategoryAll()); g.appendChild(injuryRaceAll()); charts.appendChild(g);
     const g2=el("div","grid2");
-    g2.appendChild(stackedByAttack("Structures destroyed, by property type","Striped by mob attack · each bar is one property type",DB.struct));
-    g2.appendChild(stackedSelfDefense());
+    g2.appendChild(propSevLine());
+    g2.appendChild(propRaceLine());
     charts.appendChild(g2);
+    const gp=el("div","grid2");
+    gp.appendChild(stackedByAttack("Structures destroyed, by property type","Striped by mob attack · sum of buildings destroyed or damaged",DB.struct,null,"Property Destruction"));
+    gp.appendChild(stackedSelfDefense());
+    charts.appendChild(gp);
   } else {
     const ai=ATTACKS.indexOf(sel), d=DB.data[sel], m=META[sel];
     $("#vdot").style.background=m.color;
@@ -545,9 +624,13 @@ function render(){
     renderKPIs(d, false);
     const g=el("div","grid2"); g.appendChild(injuryCategorySolo(ai)); g.appendChild(injuryRaceSolo(ai)); charts.appendChild(g);
     const g2=el("div","grid2");
-    g2.appendChild(genericSolo("Structures destroyed, by property type","Property Destruction tab",DB.struct,ai,"var(--s5)"));
-    g2.appendChild(sdSolo(ai));
+    g2.appendChild(genericSolo("Structures destroyed, by property type","Sum of buildings destroyed or damaged",DB.struct,ai,"var(--s5)","Property Destruction"));
+    g2.appendChild(genericSolo("Property destroyed — by owner's race","Count of property records; race of owner/occupant",noUnrec(DB.prace),ai,"var(--s1)","Property Destruction"));
     charts.appendChild(g2);
+    const gp=el("div","grid2");
+    gp.appendChild(genericSolo("Property destroyed — by severity","Count of property records; destruction level",{"Totally Destroyed":DB.plevel["Total"],"High":DB.plevel["High"],"Med":DB.plevel["Med"],"Low":DB.plevel["Low"]},ai,"var(--s6)","Property Destruction"));
+    gp.appendChild(sdSolo(ai));
+    charts.appendChild(gp);
   }
   fitSegLabels();
 }
