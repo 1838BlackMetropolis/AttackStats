@@ -160,15 +160,11 @@
 
   <div class="sources" id="sources">
     <h3>Sources &amp; references</h3>
-    <div class="srow"><span class="k">Main data source:</span>
-      <a href="https://docs.google.com/spreadsheets/d/1pyoDLN6U8QqnlUH2AnVfrueEmofOWa6p/edit?usp=drive_link&amp;ouid=114702581068062549023&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">1834&ndash;1849 Mob Attacks Full Data (spreadsheet)</a>
-    </div>
-    <div class="srow"><span class="k">References:</span>
-      <a href="https://drive.google.com/file/d/15pM8E_rK0Zimb46kpS46OvTcxZnL_8y7/view?usp=drive_link" target="_blank" rel="noopener">1842 Lombard Street Mob Attack &amp; Beneficial Hall</a><span class="sep">·</span>
-      <a href="https://drive.google.com/file/d/1sXyoJ-6pYjlhUkyK25DxMDS0DJuG6arN/view?usp=drive_link" target="_blank" rel="noopener">1849 California House Sources</a><span class="sep">·</span>
-      <a href="https://drive.google.com/file/d/1LXdf_4-tL_8Wmj18DZJEgbYQiyDNMlhG/view?usp=drive_link" target="_blank" rel="noopener">Research Newspaper Sources</a>
-    </div>
-    <div class="srow"><span class="k">Timelines:</span>
+    <div class="srow">This data was compiled from Philadelphia City Archives (Prisoners for Trial and Quarter Sessions),
+      Pennsylvania Hospital Archives, newspaper articles, church histories, the 1838 and 1847 Pennsylvania
+      Abolition Society Census, and first-person eyewitness accounts.</div>
+    <div class="srow">Please reach out to us at <a href="mailto:connect@1838BlackMetropolis.com">connect@1838BlackMetropolis.com</a> to learn more about our sources.</div>
+    <div class="srow"><span class="k">Learn the history &mdash; see the visual timelines of these mob attacks:</span>
       <a href="https://www.1838blackmetropolis.com/mobattacks" target="_blank" rel="noopener">1838 Black Metropolis &mdash; Mob Attack Timelines</a>
     </div>
   </div>
@@ -334,12 +330,7 @@ const TAB_GID={
   "Self-Defense & Resistance":"1451125865"
 };
 function tabUrl(tab){ const g=TAB_GID[tab]; return g ? `${SHEET_BASE}${g}#gid=${g}` : SHEET_URL; }
-function srcLink(tab){
-  const p=el("p","srcdata");
-  const a=el("a",null,`Data: ${tab} tab in Google Sheets ↗`);
-  a.href=tabUrl(tab); a.target="_blank"; a.rel="noopener";
-  p.appendChild(a); return p;
-}
+function srcLink(tab){ return document.createDocumentFragment(); }  // per-chart source links removed
 function cardInfo(c, text){
   c.style.position="relative";
   const h=c.querySelector("h3"); if(h) h.style.paddingRight="26px";
