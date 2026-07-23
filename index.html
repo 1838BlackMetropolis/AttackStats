@@ -637,7 +637,7 @@ function insightInjuries(){
   const inj=i=>keys.map(k=>DB.injrace[k][i]);
   const w49=DB.injrace["White"][3]+DB.injrace["White"][4];
   const b49=DB.injrace["Black"][3]+DB.injrace["Black"][4];
-  c.insertBefore(el("div","insight-stat",`${num(w49)} : ${num(b49)}`), c.children[1]);
+  c.insertBefore(el("div","insight-stat",`${num(w49)} white : ${num(b49)} Black`), c.children[1]);
   c.insertBefore(el("p","insight-take",
     `White vs Black injuries in the 1849 hospital records. Through 1842 the toll ran even — 3:3, 3:3, 7:7. `+
     `In 1849, organized armed defense flipped it: at the Boyer House 5:1, at California House 15:1. `+
