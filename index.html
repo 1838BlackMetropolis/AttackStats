@@ -741,7 +741,8 @@ function insightsSection(parent){
 
 // ---------- Acts of Self-Defense (third tab) ----------
 const SD_ATTACK_ORDER=["Flying Horses","Red Row","Lombard Street","Boyer House","California House","St. Mary's","Community patrol"];
-function sdColor(a){ return META[a] ? META[a].color : "var(--s7)"; }
+const SD_CTX_COLOR={"St. Mary's":"var(--s7)","Community patrol":"var(--s6)"};
+function sdColor(a){ return META[a] ? META[a].color : (SD_CTX_COLOR[a]||"var(--s7)"); }
 function sdYear(a){ return META[a] ? META[a].year : "1834–51"; }
 let sdFA="all", sdFT="all";
 function selfDefenseSection(parent){
@@ -756,13 +757,29 @@ function selfDefenseSection(parent){
   tiles.appendChild(mk("People involved",num(ppl),"approx. · a minimum"));
   tiles.appendChild(mk("White aggressors hit",num(hit),"documented minimum"));
   parent.appendChild(tiles);
-  // --- acts by type ---
+  // --- acts by type, striped by attack, people on each stripe ---
   const byType={}; all.forEach(x=>byType[x.t]=(byType[x.t]||0)+1);
-  const typeItems=Object.keys(byType).map(t=>({label:t,value:byType[t],color:"var(--s5)"}))
-    .sort((a,b)=>b.value-a.value);
-  const oc=card("Acts by type of self-defense","Count of documented incidents across all attacks");
+  const attacksPresent=SD_ATTACK_ORDER.filter(a=>all.some(x=>x.a===a));
+  const series=attacksPresent.map(a=>({name:(META[a]?META[a].short:a),color:sdColor(a)}));
+  const agg={};
+  all.forEach(x=>{
+    const e=agg[x.t]||(agg[x.t]={inc:Array(attacksPresent.length).fill(0),ppl:Array(attacksPresent.length).fill(0)});
+    const i=attacksPresent.indexOf(x.a); if(i<0) return;
+    e.inc[i]+=1; e.ppl[i]+=(x.n||0);
+  });
+  let cats=Object.keys(agg).map(t=>{
+    const e=agg[t]; const iTot=e.inc.reduce((a,b)=>a+b,0); const pTot=e.ppl.reduce((a,b)=>a+b,0);
+    return {label:t, values:e.inc, ppl:e.ppl, iTot, pTot,
+            segText:(si)=> e.ppl[si]>0?num(e.ppl[si]):"", display:num(iTot)};
+  }).sort((a,b)=>b.iTot-a.iTot || b.pTot-a.pTot);
+  const oc=card("Acts by type of self-defense",
+    "Striped by attack · slice width = acts · number on slice = people involved (a documented minimum)");
   oc.style.marginTop="16px";
-  oc.appendChild(groupedBars(typeItems,{unit:"acts"}));
+  oc.appendChild(legend(series));
+  const tip=(r,si,v)=>`<span class="t-k">${r.label} · ${series[si].name}</span><br><b>${num(r.ppl[si])}</b> people · ${num(v)} act${v==1?"":"s"}`;
+  oc.appendChild(stackedBars(cats, series, {segLabel:true, tip:tip}));
+  const onote=el("p","csub","Number at right = total acts · numbers on slices = people documented (a minimum).");
+  onote.style.marginTop="10px"; oc.appendChild(onote);
   parent.appendChild(oc);
   // --- gallery card ---
   const gc=card("Every documented act","Filter by attack, or by type of self-defense");
@@ -889,6 +906,7 @@ function render(){
     $("#vdates").textContent="Every documented act of Black self-defense and resistance · people involved are minimums";
     $("#kpis").innerHTML="";
     selfDefenseSection(charts);
+    fitSegLabels();
     return;
   }
   if(sel==="all"){
